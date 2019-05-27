@@ -7,8 +7,8 @@ namespace nookbot2
 {
     class Program
     {
-        private DiscordSocketClient Client;
-        private CommandHandler CmdHandler;
+        DiscordSocketClient Client;
+        CommandHandler CmdHandler;
 
         static void Main()
             => new Program().StartAsync().GetAwaiter().GetResult();
