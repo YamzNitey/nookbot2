@@ -160,7 +160,5 @@ namespace nookbot2.Modules
                 Console.WriteLine(e);
             }
         }
-
-
     }
 }

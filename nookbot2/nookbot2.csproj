@@ -221,7 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandler.cs" />
-    <Compile Include="Modules\Misc.cs" />
+    <Compile Include="Modules\General.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Modules\Log.cs" />
     <Compile Include="Modules\Emotes.cs" />

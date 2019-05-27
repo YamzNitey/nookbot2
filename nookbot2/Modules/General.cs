@@ -5,7 +5,7 @@ using Discord.WebSocket;
 
 namespace nookbot2.Modules
 {
-    public class Misc : ModuleBase<SocketCommandContext>
+    public class General : ModuleBase<SocketCommandContext>
     {
         [Command("hello")]
         public async Task SayHello()
@@ -45,6 +45,13 @@ namespace nookbot2.Modules
         public async Task GetMemberCount()
         {
             await ReplyAsync($"{Context.Guild.Name} has {Context.Guild.MemberCount} members.");
+        }
+
+        [Command("playing")]
+        [RequireOwner]
+        public async Task SetGameStatus([Remainder]string status)
+        {
+            await CommandHandler.Client.SetGameAsync(status);
         }
     }
 }
