@@ -40,5 +40,11 @@ namespace nookbot2.Modules
         {
             await ReplyAsync("https://github.com/Yamz9983/nookbot2");
         }
+
+        [Command("membercount")]
+        public async Task GetMemberCount()
+        {
+            await ReplyAsync($"{Context.Guild.Name} has {Context.Guild.MemberCount} members.");
+        }
     }
 }
