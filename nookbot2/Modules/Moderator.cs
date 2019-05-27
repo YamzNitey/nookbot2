@@ -25,7 +25,7 @@ namespace nookbot2.Modules
                     await user.KickAsync(reason: $"Kicked by: {Context.User} | Reason: {reason}");
                     await ReplyAsync($"`{user}` has been kicked.");
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     await ReplyAsync($"An error occured while attempting to kick `{user}`.");
                     Console.WriteLine(e);
@@ -50,7 +50,7 @@ namespace nookbot2.Modules
                     await user.BanAsync(reason: $"Banned by: {Context.User} | Reason: {reason}");
                     await ReplyAsync($"`{user}` has been banned. 🔨");
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     await ReplyAsync($"An error occured while attempting to ban `{user}`.");
                     Console.WriteLine(e);
@@ -68,7 +68,7 @@ namespace nookbot2.Modules
                 await user.Guild.RemoveBanAsync(user);
                 await ReplyAsync($"`{user}` has been unbanned.");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 await ReplyAsync($"An error occured while attempting to unban `{user}`.");
                 Console.WriteLine(e);
@@ -92,7 +92,7 @@ namespace nookbot2.Modules
                     await user.AddRoleAsync(mutedRole);
                     await ReplyAsync($"`{user}` has been muted.");
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     await ReplyAsync($"An error occured while attempting to mute `{user}`.");
                     Console.WriteLine(e);
@@ -118,7 +118,7 @@ namespace nookbot2.Modules
                     await ReplyAsync($"{user} isn't muted.");
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 await ReplyAsync($"An error occured while attempting to unmute `{user}`.");
                 Console.WriteLine(e);
@@ -154,6 +154,7 @@ namespace nookbot2.Modules
                 await channel.AddPermissionOverwriteAsync(Context.Guild.EveryoneRole, OverwritePermissions.InheritAll.Modify(sendMessages: PermValue.Inherit));
                 await ReplyAsync("Channel unlocked. 🔓");
             }
+
             catch (Exception e)
             {
                 await ReplyAsync("An error occured while attempting to unlock the channel.");
