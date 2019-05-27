@@ -161,13 +161,6 @@ namespace nookbot2.Modules
             }
         }
 
-        [Command("prune")]
-        [RequireUserPermission(GuildPermission.ManageMessages)]
-        [RequireBotPermission(GuildPermission.ManageMessages)]
-        [Alias("purge", "del", "delete")]
-        public async Task PruneMsgs(int amount)
-        {
 
-        }
     }
 }
