@@ -51,7 +51,7 @@ namespace nookbot2.Modules
         [RequireOwner]
         public async Task SetGameStatus([Remainder]string status)
         {
-            await CommandHandler.Client.SetGameAsync(status);
+            await Context.Client.SetGameAsync(status);
             await ReplyAsync($"Game status changed to {status}. 👍");
         }
     }
