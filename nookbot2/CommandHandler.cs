@@ -9,28 +9,28 @@ namespace nookbot2
 {
     class CommandHandler
     {
-        public static DiscordSocketClient Client;
-        private CommandService Service;
+        private DiscordSocketClient _Client;
+        private CommandService _Service;
 
         public async Task InitAsync(DiscordSocketClient client)
         {
-            Client = client;
-            Service = new CommandService();
-            await Service.AddModulesAsync(assembly: Assembly.GetEntryAssembly(), services: null);
+            _Client = client;
+            _Service = new CommandService();
+            await _Service.AddModulesAsync(assembly: Assembly.GetEntryAssembly(), services: null);
 
-            Client.MessageReceived += HandleCmdAsync;
-            Client.ReactionAdded += Client_ReactionAdded;
-            Client.ReactionRemoved += Client_ReactionRemoved;
+            _Client.MessageReceived += HandleCmdAsync;
+            _Client.ReactionAdded += Client_ReactionAdded;
+            _Client.ReactionRemoved += Client_ReactionRemoved;
         }
 
         private async Task HandleCmdAsync(SocketMessage message)
         {
             if (!(message is SocketUserMessage userMessage)) return;
-            SocketCommandContext context = new SocketCommandContext(Client, userMessage);
+            SocketCommandContext context = new SocketCommandContext(_Client, userMessage);
 
             int argPos = 0;
-            if(userMessage.HasStringPrefix(Config.Bot.CommandPrefix, ref argPos))
-                await Service.ExecuteAsync(context, argPos, services: null);
+            if (userMessage.HasStringPrefix(Config.Bot.CommandPrefix, ref argPos))
+                await _Service.ExecuteAsync(context, argPos, services: null);
         }
 
         private async Task Client_ReactionAdded(Cacheable<IUserMessage, ulong> message, ISocketMessageChannel channel, SocketReaction reaction)
@@ -48,7 +48,7 @@ namespace nookbot2
 
                 await Log.SendReactionLog(reactionModLog);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }

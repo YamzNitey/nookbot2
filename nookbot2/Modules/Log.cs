@@ -2,9 +2,10 @@
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using System;
 
 namespace nookbot2
-{
+{ 
     public class Log : ModuleBase<SocketCommandContext>
     {
         public static async Task SendReactionLog(ReactionModLog log)
@@ -29,7 +30,7 @@ namespace nookbot2
             embed.AddField("Emote", emoteInEmbed);
             embed.AddField("Date and time and message ID", log.DTAndMID);
 
-            ISocketMessageChannel modlogChannel = CommandHandler.Client.GetChannel(Config.Bot.LogChannel) as ISocketMessageChannel;
+            ISocketMessageChannel modlogChannel = Context.Client.GetChannel(Config.Bot.LogChannel) as ISocketMessageChannel;
             await modlogChannel.SendMessageAsync("", false, embed.Build());
         }
     }
