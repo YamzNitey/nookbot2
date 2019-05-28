@@ -46,13 +46,5 @@ namespace nookbot2.Modules
         {
             await ReplyAsync($"{Context.Guild.Name} has {Context.Guild.MemberCount} members.");
         }
-
-        [Command("playing")]
-        [RequireOwner]
-        public async Task SetGameStatus([Remainder]string status)
-        {
-            await Context.Client.SetGameAsync(status);
-            await ReplyAsync($"Game status changed to {status}. 👍");
-        }
     }
 }

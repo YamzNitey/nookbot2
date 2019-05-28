@@ -115,7 +115,7 @@ namespace nookbot2.Modules
                 }
                 else
                 {
-                    await ReplyAsync($"{user} isn't muted.");
+                    await ReplyAsync($"`{user}` isn't muted.");
                 }
             }
             catch (Exception e)
@@ -158,6 +158,75 @@ namespace nookbot2.Modules
             catch (Exception e)
             {
                 await ReplyAsync("An error occured while attempting to unlock the channel.");
+                Console.WriteLine(e);
+            }
+        }
+
+        [Command("nickname")]
+        [RequireUserPermission(GuildPermission.ManageNicknames)]
+        [RequireBotPermission(GuildPermission.ManageNicknames)]
+        public async Task SetUserNickname(SocketGuildUser user, [Remainder]string nickname)
+        {
+            try
+            {
+                await user.ModifyAsync(x => x.Nickname = nickname);
+                await ReplyAsync($"`{user}`'s nickname is now `{nickname}`.");
+            }
+            catch(Exception e)
+            {
+                await ReplyAsync("An error occured while attempting to change the user's nickname.");
+                Console.WriteLine(e);
+            }
+        }
+
+        [Command("playing")]
+        [RequireUserPermission(GuildPermission.BanMembers)]
+        public async Task SetGameStatus([Remainder]string status)
+        {
+            await Context.Client.SetGameAsync(status);
+            await ReplyAsync($"Game status changed to `{status}`. 👍");
+        }
+
+        [Command("addrole")]
+        [Alias("ar", "role")]
+        [RequireUserPermission(GuildPermission.ManageRoles)]
+        [RequireBotPermission(GuildPermission.ManageRoles)]
+        public async Task AddRole(SocketGuildUser user, [Remainder]string roleName)
+        {
+            try
+            {
+                IRole role = Context.Guild.Roles.FirstOrDefault(x => x.Name == roleName);
+
+                if(user.Roles.Contains(role))
+                    await ReplyAsync($"`{user}` already has the `{role.Name}` role.");
+                else
+                    await user.AddRoleAsync(role);
+            }
+            catch(Exception e)
+            {
+                await ReplyAsync("An exception occured while attempting to assign the role to the user. Perhaps the role doesn't exist?");
+                Console.WriteLine(e);
+            }
+        }
+
+        [Command("removerole")]
+        [Alias("rr")]
+        [RequireUserPermission(GuildPermission.ManageRoles)]
+        [RequireBotPermission(GuildPermission.ManageRoles)]
+        public async Task RemoveRole(SocketGuildUser user, [Remainder]string roleName)
+        {
+            try
+            {
+                IRole role = Context.Guild.Roles.FirstOrDefault(x => x.Name == roleName);
+
+                if (user.Roles.Contains(role))
+                    await ReplyAsync($"`{user}` already has the `{role.Name}` role.");
+                else
+                    await user.AddRoleAsync(role);
+            }
+            catch(Exception e)
+            {
+                await ReplyAsync("An error occured while attempting to remove the role from the user. Perhaps the role doesn't exist?");
                 Console.WriteLine(e);
             }
         }
