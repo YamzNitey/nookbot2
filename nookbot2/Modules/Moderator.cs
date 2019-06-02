@@ -9,11 +9,26 @@ namespace nookbot2.Modules
 {
     public class Moderator : ModuleBase<SocketCommandContext>
     {
+        [Command("say")]
+        [RequireBotPermission(GuildPermission.Administrator)]
+        public async Task Say([Remainder]string message)
+        {
+            await Say(Context.Channel, message);
+        }
+
+        [Command("say")]
+        [RequireBotPermission(GuildPermission.Administrator)]
+        public async Task Say(ISocketMessageChannel channel, [Remainder]string message)
+        {
+            await channel.SendMessageAsync(message);
+        }
+
         [Command("kick")]
         [RequireUserPermission(GuildPermission.KickMembers)]
         [RequireBotPermission(GuildPermission.KickMembers)]
         public async Task KickUser(SocketGuildUser user, [Remainder]string reason = "No reason provided.")
         {
+            // If the user is executing the command on themselves...
             if (Context.User == user)
             {
                 await ReplyAsync("You cannot perform moderator actions on yourself. 😡");
@@ -38,7 +53,6 @@ namespace nookbot2.Modules
         [RequireBotPermission(GuildPermission.BanMembers)]
         public async Task BanUser(SocketGuildUser user, [Remainder]string reason = "No reason provided.")
         {
-            // If the user is executing the command on themselves...
             if (Context.User == user)
             {
                 await ReplyAsync("You cannot perform moderator actions on yourself. 😡");

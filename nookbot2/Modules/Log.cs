@@ -2,9 +2,8 @@
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using System;
 
-namespace nookbot2
+namespace nookbot2.Modules
 { 
     public class Log : ModuleBase<SocketCommandContext>
     {

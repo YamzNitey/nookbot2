@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using System;
 
 namespace nookbot2.Modules
 {
@@ -11,20 +11,6 @@ namespace nookbot2.Modules
         public async Task SayHello()
         {
             await ReplyAsync("Hello, World!");
-        }
-
-        [Command("say")]
-        [RequireBotPermission(GuildPermission.Administrator)]
-        public async Task Say([Remainder]string message)
-        {
-            await Say(Context.Channel, message);
-        }
-
-        [Command("say")]
-        [RequireBotPermission(GuildPermission.Administrator)]
-        public async Task Say(ISocketMessageChannel channel, [Remainder]string message)
-        {
-            await channel.SendMessageAsync(message);
         }
 
         [Command("avatar")]
@@ -45,6 +31,19 @@ namespace nookbot2.Modules
         public async Task GetMemberCount()
         {
             await ReplyAsync($"{Context.Guild.Name} has {Context.Guild.MemberCount} members.");
+        }
+
+        [Command("headsortails")]
+        [Alias("hot", "heads", "tails")]
+        public async Task HeadsOrTails()
+        {
+            Random rnd = new Random();
+            int result = rnd.Next(0, 2);
+
+            if (result == 1)
+                await ReplyAsync("Heads.");
+            else
+                await ReplyAsync("Tails.");
         }
     }
 }

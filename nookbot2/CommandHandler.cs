@@ -4,6 +4,7 @@ using System.Reflection;
 using Discord;
 using Discord.WebSocket;
 using Discord.Commands;
+using nookbot2.Modules;
 
 namespace nookbot2
 {

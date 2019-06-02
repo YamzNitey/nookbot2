@@ -7,7 +7,7 @@ namespace nookbot2
     {
         private const string configFolder = "config";
         private const string configFile = "config.json";
-        public const string configFullPath = configFolder + "/" + configFile;
+        private const string configFullPath = configFolder + "/" + configFile;
 
         public static BotConfig Bot;
 
