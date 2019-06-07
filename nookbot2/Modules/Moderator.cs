@@ -72,7 +72,7 @@ namespace nookbot2.Modules
             }
         }
 
-        [Command("unban")]
+        [Command("unban", true)]
         [RequireUserPermission(GuildPermission.BanMembers)]
         [RequireBotPermission(GuildPermission.BanMembers)]
         public async Task UnbanUser(SocketGuildUser user)
@@ -89,7 +89,7 @@ namespace nookbot2.Modules
             }
         }
 
-        [Command("mute")]
+        [Command("mute", true)]
         [RequireUserPermission(GuildPermission.ManageRoles)]
         [RequireBotPermission(GuildPermission.ManageRoles)]
         public async Task MuteUser(SocketGuildUser user)
@@ -114,7 +114,7 @@ namespace nookbot2.Modules
             }
         }
 
-        [Command("unmute")]
+        [Command("unmute", true)]
         [RequireUserPermission(GuildPermission.ManageRoles)]
         [RequireBotPermission(GuildPermission.ManageRoles)]
         public async Task UnmuteUser(SocketGuildUser user)
@@ -139,7 +139,7 @@ namespace nookbot2.Modules
             }
         }
 
-        [Command("lock")]
+        [Command("lock", true)]
         [RequireUserPermission(GuildPermission.ManageRoles)]
         [RequireBotPermission(GuildPermission.ManageRoles)]
         public async Task LockChannel()
@@ -157,7 +157,7 @@ namespace nookbot2.Modules
             }
         }
 
-        [Command("unlock")]
+        [Command("unlock", true)]
         [RequireUserPermission(GuildPermission.ManageRoles)]
         [RequireBotPermission(GuildPermission.ManageRoles)]
         public async Task UnlockChannel()

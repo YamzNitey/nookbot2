@@ -8,7 +8,7 @@ namespace nookbot2.Modules
 {
     public class Emotes : ModuleBase<SocketCommandContext>
     {
-        [Command("download_emotes")]
+        [Command("download_emotes", true)]
         [RequireOwner]
         [Alias("de")]
         public async Task DownloadEmotes()
@@ -33,7 +33,7 @@ namespace nookbot2.Modules
             await ReplyAsync("Done, downloaded " + downloadedEmotes + " emote(s).");
         }
 
-        [Command("number_of_emotes")]
+        [Command("number_of_emotes", true)]
         [RequireOwner]
         [Alias("noe")]
         public async Task NumberOfEmotes()

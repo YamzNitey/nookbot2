@@ -8,33 +8,33 @@ namespace nookbot2.Modules
 {
     public class General : ModuleBase<SocketCommandContext>
     {
-        [Command("hello")]
+        [Command("hello", true)]
         public async Task SayHello()
         {
-            await ReplyAsync("Hello, World!");
+            await ReplyAsync($"Hello, <@{Context.User.Id}>!");
         }
 
-        [Command("avatar")]
+        [Command("avatar", true)]
         public async Task GetAvatar(SocketGuildUser user)
         {
             string avatarUrl = user.GetAvatarUrl(size: 1024);
             await ReplyAsync($"`{user}`'s avatar is {avatarUrl}");
         }
 
-        [Command("source")]
+        [Command("source", true)]
         [Alias("sourcecode", "sauce")]
         public async Task GetSourceLink()
         {
             await ReplyAsync("https://github.com/Yamz9983/nookbot2");
         }
 
-        [Command("membercount")]
+        [Command("membercount", true)]
         public async Task GetMemberCount()
         {
             await ReplyAsync($"{Context.Guild.Name} has {Context.Guild.MemberCount} members.");
         }
 
-        [Command("headsortails")]
+        [Command("headsortails", true)]
         [Alias("hot", "heads", "tails")]
         public async Task HeadsOrTails()
         {
