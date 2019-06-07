@@ -2,6 +2,7 @@
 using Discord.Commands;
 using Discord.WebSocket;
 using System;
+using System.IO;
 
 namespace nookbot2.Modules
 {
