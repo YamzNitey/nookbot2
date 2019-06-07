@@ -65,7 +65,7 @@ namespace nookbot2
                     UserReaction = $"{reaction.User} ({reaction.UserId})",
                     ChannelID = channel.Id,
                     Emote = reaction.Emote,
-                    DTAndMID = $"Message ID: {message.Id} | {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm tt")} (UTC)"
+                    DTAndMID = $"Message ID: {message.Id} | {DateTime.UtcNow.ToString("MM-dd-yyyy HH:mm tt")} (UTC)"
                 };
 
                 await Log.SendReactionLog(reactionModLog);
