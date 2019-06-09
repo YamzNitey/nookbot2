@@ -36,6 +36,7 @@ namespace nookbot2
             });
 
             Client.Log += Client_Log;
+            Client.Ready += Client_Ready;
 
             await Client.LoginAsync(TokenType.Bot, Config.Bot.Token);
             await Client.StartAsync();
@@ -46,7 +47,12 @@ namespace nookbot2
 
         private async Task Client_Log(LogMessage logMessage)
         {
-            await Console.Out.WriteLineAsync(logMessage.ToString());
+            await Console.Out.WriteLineAsync(logMessage.Message);
+        }
+
+        private async Task Client_Ready()
+        {
+            await Console.Out.WriteLineAsync($"Logged in as {Client.CurrentUser} ({Client.CurrentUser.Id})");
         }
     }
 }
