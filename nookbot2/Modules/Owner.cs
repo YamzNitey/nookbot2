@@ -30,7 +30,7 @@ namespace nookbot2.Modules
                 }
             }
 
-            await ReplyAsync("Done, downloaded " + downloadedEmotes + " emote(s).");
+            await ReplyAsync($"Done, downloaded {downloadedEmotes} emote(s).");
         }
 
         [Command("number_of_emotes", true)]
