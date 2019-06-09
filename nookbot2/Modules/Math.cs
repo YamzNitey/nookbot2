@@ -79,14 +79,14 @@ namespace nookbot2.Modules
         [Alias("ls")]
         public async Task LeftShift(long num, int bitAmount)
         {
-            await ReplyAsync($"Result: `{num}` << {bitAmount} = `{num << bitAmount}`");
+            await ReplyAsync($"Result: `{num}` << `{bitAmount}` = `{num << bitAmount}`");
         }
 
         [Command("rightshift")]
         [Alias("rs")]
         public async Task RightShift(long num, int bitAmount)
         {
-            await ReplyAsync($"Result: `{num}` >> {bitAmount} = `{num >> bitAmount}`");
+            await ReplyAsync($"Result: `{num}` >> `{bitAmount}` = `{num >> bitAmount}`");
         }
     }
 }
