@@ -6,7 +6,7 @@ using System.Net;
 
 namespace nookbot2.Modules
 {
-    public class Emotes : ModuleBase<SocketCommandContext>
+    public class Owner : ModuleBase<SocketCommandContext>
     {
         [Command("download_emotes", true)]
         [RequireOwner]
